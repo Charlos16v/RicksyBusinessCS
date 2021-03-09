@@ -51,7 +51,7 @@ namespace RicksyBusinessCS.domain
         {
             return "Stock: " + getStock() + '\n' +
                    "MenuCost: " + getItemCost() + '\n' +
-                   "Orders: " + getClients() + '\n' +
+                   "Orders: " + string.Join(", ", getClients()) + '\n' +
                    "OrdersQuantity: " + getClients().Count;
         }
     }
