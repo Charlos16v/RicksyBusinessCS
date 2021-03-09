@@ -1,4 +1,5 @@
 # User specific
+
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
 **/.idea/shelf/*
@@ -30,3 +31,4 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
+/.idea/
