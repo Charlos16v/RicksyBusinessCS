@@ -2,11 +2,13 @@
 using RicksyBusinessCS.domain;
 
 namespace RicksyBusinessCS
-{
+{       
         public class RicksyBusiness
         {
+                
                 public static void Main(String[] args)
                 {
+                    
 
                         /**
                          * Crea una tarjeta de crédito para Abradolph.
@@ -139,7 +141,7 @@ namespace RicksyBusinessCS
                          * Para ello, crea el componente receptivo
                          * y registra (añade) los componentes UfosPark
                          * y CrystalDispatcher al receptivo
-                         
+                         */
                 
                         Receptivo receptivo = new Receptivo();
                         receptivo.registra(packExpender);
@@ -151,32 +153,32 @@ namespace RicksyBusinessCS
                 
                         // Squanchy reserva ovni (ya tiene) y pack
                 
-                        System.out.println("\nLLega Squanchy!\n" +
-                                "===============");
+                        Console.WriteLine("\nLLega Squanchy!\n" +
+                                          "===============");
                         receptivo.dispatch(squanchy);
                         mostrarReserva(squanchy, packExpender, ufosPark);
                 
                         // Gearhead reserva ovni y pack.
                         // No tiene crédito.
                 
-                        System.out.println("\nLLega GearHead!\n" +
-                                "===============");
+                        Console.WriteLine("\nLLega GearHead!\n" +
+                                          "===============");
                         gearHead.pay(3000); // no tiene crédito
                         receptivo.dispatch(gearHead);
                         mostrarReserva(gearHead, packExpender, ufosPark);
                 
                         // Birdpearson es recibido en la fiesta
                 
-                        System.out.println("\nLLega Birdpearson!\n" +
-                                "==================");
+                        Console.WriteLine("\nLLega Birdpearson!\n" +
+                                          "==================");
                         CreditCard birdpearson = new CreditCard("Birdpearson", "1111111111111111");
                         receptivo.dispatch(birdpearson);
                         mostrarReserva(birdpearson, packExpender, ufosPark);
                 
                         // Morty intenta reservar un ovni y un pack pero no quedan
                 
-                        System.out.println("\nMorty quiere pack y ovni pero no quedan :(\n" +
-                                "==========================================");
+                        Console.WriteLine("\nMorty quiere pack y ovni pero no quedan :(\n" +
+                                          "==========================================");
                         morty = new CreditCard("Morty", "0000000000000000");
                         receptivo.dispatch(morty);
                         mostrarReserva(morty, packExpender, ufosPark);
@@ -194,50 +196,50 @@ namespace RicksyBusinessCS
                          * Hay 100 RickMenús y su precio es de 10 EZIs.
                          * Muestra el total de pedidos y la lista de
                          * invitados/as que han hecho un pedido.
-                         
+                         */
                 
-                        System.out.println("\nTodo el mundo quiere RickMenu's!\n" + "==========================================");
+                        Console.WriteLine("\nTodo el mundo quiere RickMenu's!\n" + "==========================================");
                         RickMenu rickMenu = new RickMenu(100, 10);
                         receptivo.registra(rickMenu);
                 
-                        System.out.println("\nAbradolph!\n");
+                        Console.WriteLine("\nAbradolph!\n");
                         receptivo.dispatch(abradolph);
                         mostrarReserva(abradolph, packExpender, ufosPark, rickMenu);
                 
-                        System.out.println("\nSquanchy!\n");
+                        Console.WriteLine("\nSquanchy!\n");
                         receptivo.dispatch(squanchy);
                         mostrarReserva(squanchy, packExpender, ufosPark, rickMenu);
                 
-                        System.out.println("\nMorty!\n");
+                        Console.WriteLine("\nMorty!\n");
                         receptivo.dispatch(morty);
                         mostrarReserva(morty, packExpender, ufosPark, rickMenu);
                 
-                        System.out.println("\nGearHead!\n");
+                        Console.WriteLine("\nGearHead!\n");
                         receptivo.dispatch(gearHead);
                         mostrarReserva(gearHead, packExpender, ufosPark, rickMenu);
                 
-                        System.out.println("\nBirdpearson!\n");
+                        Console.WriteLine("\nBirdpearson!\n");
                         receptivo.dispatch(birdpearson);
                         mostrarReserva(birdpearson, packExpender, ufosPark, rickMenu);
                 
-                        System.out.println("\nTotal RickMenus!\n" + "==========================================");
-                        System.out.println(rickMenu);
+                        Console.WriteLine("\nTotal RickMenus!\n" + "==========================================");
+                        Console.WriteLine(rickMenu);
                 
-                    }
+                }
                 
                     // With RickMenu
                     private static void mostrarReserva(CreditCard card, CrystalExpender expender, UfosPark ufos, RickMenu rickMenu) {
-                        System.out.println(card);
-                        System.out.println("Packs: " + expender.stock());
-                        System.out.println("Ovni: " + ufos.getUfoOf(card.number()));
-                        System.out.println("Menus: " + rickMenu.stock());
+                        Console.WriteLine(card);
+                        Console.WriteLine("Packs: " + expender.getStock());
+                        Console.WriteLine("Ovni: " + ufos.getUfoOf(card.getNumber()));
+                        Console.WriteLine("Menus: " + rickMenu.getStock());
                     }
-                
-                    private static void mostrarReserva(CreditCard card, CrystalExpender expender, UfosPark ufos) {
-                        System.out.println(card);
-                        System.out.println("Packs: " + expender.stock());
-                        System.out.println("Ovni: " + ufos.getUfoOf(card.number()));
-                    }*/
-                }
+                    
+                    static void mostrarReserva(CreditCard card, CrystalExpender expender, UfosPark ufos) {
+                        Console.WriteLine(card);
+                        Console.WriteLine("Packs: " + expender.getStock());
+                        Console.WriteLine("Ovni: " + ufos.getUfoOf(card.getNumber()));
+                    }
         }
+                
 }
