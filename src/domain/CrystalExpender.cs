@@ -1,3 +1,5 @@
+using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Payloads;
+
 namespace RicksyBusinessCS.domain
 {
     public class CrystalExpender : GuestDispatcher
@@ -11,9 +13,22 @@ namespace RicksyBusinessCS.domain
             this.itemCost = itemCost;
         }
 
+        public int getStock() => stock;
+
+        public double getItemCost() => itemCost;
+
         public void dispatch(CreditCard card)
         {
-            
+            if ( this.stock > 0 && card.pay(itemCost) )
+            {
+                this.stock -= 1;
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Stock: " + getStock() + '\n' +
+                   "ItemCost: " + getItemCost() + '\n';
         }
     }
 }
