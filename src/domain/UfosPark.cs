@@ -35,7 +35,6 @@ namespace RicksyBusinessCS.domain
             return ufos;
         }
 
-        
         public void printUfos()
         {
             foreach (var ufo in fleet.Keys)
@@ -47,7 +46,7 @@ namespace RicksyBusinessCS.domain
         public void dispatch(CreditCard creditCard)
         {
             
-            if (fleet.ContainsValue(creditCard.getNumber()) == false)
+            if (!fleet.ContainsValue(creditCard.getNumber()))
             {
                 foreach (var item in fleet)
                 {
