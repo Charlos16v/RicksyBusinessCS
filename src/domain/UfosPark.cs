@@ -39,9 +39,8 @@ namespace RicksyBusinessCS.domain
         public void printUfos()
         {
             foreach (var ufo in fleet.Keys)
-                Console.WriteLine(ufo);
             {
-                
+                Console.WriteLine(ufo);
             }
         }
 
