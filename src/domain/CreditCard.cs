@@ -2,10 +2,10 @@ namespace RicksyBusinessCS.domain
 {
     public class CreditCard
     {
-        private readonly string owner;
         private readonly string number;
-        private double credit = 3000.0;
+        private readonly string owner;
         private readonly string SYMBOL = "EZI";
+        private double credit = 3000.0;
 
         public CreditCard(string owner, string number)
         {
@@ -15,22 +15,22 @@ namespace RicksyBusinessCS.domain
 
         public string getOwner()
         {
-            return this.owner;
+            return owner;
         }
 
         public string getNumber()
         {
-            return this.number;
+            return number;
         }
-        
+
         public double getCredit()
         {
-            return this.credit;
+            return credit;
         }
 
         public string getSymbol()
         {
-            return this.SYMBOL;
+            return SYMBOL;
         }
 
         public bool pay(double credit)
@@ -39,18 +39,16 @@ namespace RicksyBusinessCS.domain
             {
                 return false;
             }
-            else
-            {
-                this.credit -= credit;
-                return true;
-            }
-            
+
+            this.credit -= credit;
+            return true;
         }
+
         public override string ToString()
         {
             return "Owner: " + getOwner() + '\n' +
-                   "Number: " + getNumber() + '\n' + 
-                   "Credit: " + getCredit() + ' ' +getSymbol();
+                   "Number: " + getNumber() + '\n' +
+                   "Credit: " + getCredit() + ' ' + getSymbol();
         }
     }
 }

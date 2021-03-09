@@ -1,11 +1,9 @@
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Payloads;
-
 namespace RicksyBusinessCS.domain
 {
     public class CrystalExpender : GuestDispatcher
     {
-        private int stock = 0;
-        private double itemCost = 0.0d;
+        private readonly double itemCost;
+        private int stock;
 
         public CrystalExpender(int stock, double itemCost)
         {
@@ -13,16 +11,19 @@ namespace RicksyBusinessCS.domain
             this.itemCost = itemCost;
         }
 
-        public int getStock() => stock;
-
-        public double getItemCost() => itemCost;
-
         public void dispatch(CreditCard card)
         {
-            if ( this.stock > 0 && card.pay(itemCost) )
-            {
-                this.stock -= 1;
-            }
+            if (stock > 0 && card.pay(itemCost)) stock -= 1;
+        }
+
+        public int getStock()
+        {
+            return stock;
+        }
+
+        public double getItemCost()
+        {
+            return itemCost;
         }
 
         public override string ToString()

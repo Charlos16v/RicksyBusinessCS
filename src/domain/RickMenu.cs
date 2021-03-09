@@ -1,24 +1,38 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace RicksyBusinessCS.domain
 {
     public class RickMenu : GuestDispatcher
     {
-        private int stock = 0;
-        private double itemCost = 0.0d;
-        private LinkedList<string> orders = new LinkedList<string>();
+        private readonly double itemCost;
+        private readonly LinkedList<string> orders = new();
+        private int stock;
 
         public RickMenu(int stock, double itemCost)
         {
             this.stock = stock;
             this.itemCost = itemCost;
         }
-        
-        public int getStock() => stock;
 
-        public double getItemCost() => itemCost;
+        public void dispatch(CreditCard card)
+        {
+            if (stock > 0 && card.pay(itemCost))
+            {
+                stock -= 1;
+                addClient(card.getOwner());
+            }
+        }
+
+        public int getStock()
+        {
+            return stock;
+        }
+
+        public double getItemCost()
+        {
+            return itemCost;
+        }
 
         public LinkedList<string> getClients()
         {
@@ -27,26 +41,14 @@ namespace RicksyBusinessCS.domain
 
         public void addClient(string client)
         {
-            this.orders.AddLast(client);
+            orders.AddLast(client);
         }
-        
+
         public void printClients()
         {
-            foreach (var client in orders)
-            {
-                Console.Write(client);
-            }
+            foreach (var client in orders) Console.Write(client);
         }
-        
-        public void dispatch(CreditCard card)
-        {
-            if (this.stock > 0 && card.pay(itemCost))
-            {
-                this.stock -= 1;
-                addClient(card.getOwner());
-            }
-        }
-        
+
         public override string ToString()
         {
             return "Stock: " + getStock() + '\n' +
